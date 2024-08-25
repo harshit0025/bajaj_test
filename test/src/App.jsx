@@ -4,6 +4,8 @@ export default function App() {
   const [data, setData] = useState("");
   const [response, setResponse] = useState({});
   const [error, setError] = useState(null); 
+  const [selected, setSelected] = useState("numbers");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +16,7 @@ export default function App() {
         body: data,
       });
       const xyz = await res.json();
-      console.log(xyz);
+      console.log("xyz",xyz);
 
       const { numbers, alphabets, highest_lowercase_alphabet } = xyz;
 
@@ -23,6 +25,15 @@ export default function App() {
       setError("Invalid JSON or Network Error");
     }
   };
+
+  const handleSelectOption = (e) =>{
+    setSelected(e.target.value);
+    
+  }
+  console.log(selected);
+  
+  console.log(response["numbers"]);
+  
 
   return (
     <div>
@@ -36,10 +47,20 @@ export default function App() {
           cols="50"
         />
         <button type="submit">Submit</button>
+        <select onChange={handleSelectOption}>
+          {/* <option value="" disabled>Select an option</option> */}
+          <option value = "numbers">Numbers</option>
+          <option value = "alphabets">Alphabets</option>
+          <option value = "highest_lowercase_alphabet">Highest Lowercase Alphabets</option>
+        </select>
       </form>
       <p>Filtered Response</p>
+      
+      
       {error && <p>{error}</p>}
-      {response && <p>{JSON.stringify(response)}</p>}
+      <p>{selected} : {JSON.stringify(response[selected])}</p>
+      {/* {response[selected]  && <p>{JSON.stringify(response)}</p>} */}
+      
     </div>
   );
 }
