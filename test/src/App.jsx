@@ -8,7 +8,7 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/bfhl", {
+      const res = await fetch("https://bajaj-test-cu5v.onrender.com/bfhl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: data,
@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <div>
-        <h1></h1>
+      <h1></h1>
       <form onSubmit={handleSubmit}>
         <textarea
           value={data}
