@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function App() {
   const [data, setData] = useState("");
   const [response, setResponse] = useState({});
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
