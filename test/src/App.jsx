@@ -16,7 +16,9 @@ export default function App() {
       const xyz = await res.json();
       console.log(xyz);
 
-      setResponse(data);
+      const { numbers, alphabets, highest_lowercase_alphabet } = xyz;
+
+      setResponse({ numbers, alphabets, highest_lowercase_alphabet });
     } catch (err) {
       setError("Invalid JSON or Network Error");
     }
